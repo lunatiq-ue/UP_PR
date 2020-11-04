@@ -14,7 +14,7 @@
         <newNote 
         :note="note" 
         @addNote="addNote" />
-
+     
         <!-- new note -->
         <div class="new-note">
             <input v-model="note.title" type="text">
