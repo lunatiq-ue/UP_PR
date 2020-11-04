@@ -14,13 +14,6 @@
         <newNote 
         :note="note" 
         @addNote="addNote" />
-     
-        <!-- new note -->
-        <div class="new-note">
-            <input v-model="note.title" type="text">
-            <textarea v-model="note.descr"></textarea>
-            <button @click="addNote">New Note</button>
-        </div>
 
         <!-- note list -->
         <div class="notes">  
