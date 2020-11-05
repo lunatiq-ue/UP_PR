@@ -1,8 +1,10 @@
 <template>
     <div class="new-note">
+        <label>Title</label> 
             <input v-model="note.title" type="text">
+            <label>Description</label>
             <textarea v-model="note.descr"></textarea>
-            <button @click="addNote">New Note</button>
+            <button class="btn btnPrimary btnsec" @click="addNote">New Note</button>
     </div>
 </template>
 
@@ -21,3 +23,13 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+.new-note {
+    text-align: center;
+    
+}
+.btnsec {
+    margin-top: 25px;
+}
+</style>

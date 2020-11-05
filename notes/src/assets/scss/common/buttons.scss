@@ -4,7 +4,7 @@
   line-height: 1;
   text-transform: uppercase;
   cursor: pointer;
-  border-radius: 30px;
+  border-radius: 20px;
 
   // default btn
   &.btnDefaul {
@@ -15,9 +15,9 @@
 
   // primiry btn
   &.btnPrimary {
-    color: #ffffff;
-    border: 1px solid #494ce8;
-    background-color: #494ce8;
+    color: black; 
+    background: linear-gradient(-78deg, #FFC6A6, #FFD4CF);
+    margin-bottom:25px ;
   }
 
   // danger btn
