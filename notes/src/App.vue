@@ -10,7 +10,7 @@
       <message v-if="message" :message="message" />
 
       <newNote :note="note" @addNote="addNote" />
-
+      <secondNote :note="note" @addNote="addNote" />
       <div class="note-header" >
         
         <!-- title -->
@@ -47,13 +47,16 @@ import message from '@/components/Message.vue'
 import Notes from '@/components/Notes.vue'
 import newNote from '@/components/NewNote.vue'
 import search from '@/components/Search.vue'
+import secondNote from '@/components/secondNote.vue'
 
 export default {
   components: {
     message,
     Notes,
     newNote,
-    search
+    search,
+    secondNote
+
   },
   data () {
     return {
@@ -102,6 +105,26 @@ export default {
     }
   },
   methods: {
+                 secondNote () {
+                                // console.log(this.note)
+                                let {title, descr} = this.note
+
+                                if (title === '') {
+                                this.message = 'Title cant be blank'
+                                return false
+                                }
+
+                                this.notes.push({
+                                    title,
+                                    descr,
+                                    date: new Date(Date.now()).toLocaleString()
+                                })
+                                this.message = null
+                                this.note.title = ''
+                                this.note.descr = ''
+                 },
+
+
                 addNote () {
                     // console.log(this.note)
                     let {title, descr} = this.note
