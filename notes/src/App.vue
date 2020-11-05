@@ -10,7 +10,7 @@
       <message v-if="message" :message="message" />
 
       <newNote :note="note" @addNote="addNote" />
-      <secondNote :note="note" @secondNote="secondNote" />
+      <secondNote :class=" { active: !priority } " :note="note" @secondNote="secondNote" />
       <div class="note-header" >
         
         <!-- title -->
@@ -62,8 +62,10 @@ export default {
     return {
       title: 'Notes App',
                 search: '',
-                message: null, 
+                message: null,
+                
                 grid: true,
+                priority: true, 
                 note: {
                     title: '',
                     descr: ''
@@ -74,16 +76,8 @@ export default {
                         descr: 'Description for first note',
                         date: new Date(Date.now()).toLocaleString()
                        },
-                       {
-                        title: 'Second Note',
-                        descr: 'Description for second note',
-                        date: new Date(Date.now()).toLocaleString()
-                       },
-                       {
-                        title: 'Third Note',
-                        descr: 'Description for third note',
-                        date: new Date(Date.now()).toLocaleString()
-                       }                                    
+                       
+                                                      
                        ]
     }
   },

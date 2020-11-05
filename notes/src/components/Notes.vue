@@ -24,6 +24,10 @@ export default {
         grid: {
             type: Boolean,
             required: true
+        },
+        priority: {
+            type: Boolean,
+            required: true
         }
     },
     methods: {
@@ -73,6 +77,10 @@ box-shadow: 0 30px 30px rgba(0,0,0,.02);
     &.full {
         width: 100%;
         justify-content: center;
+    }
+
+    &.priority {
+        background: linear-gradient(-78deg, #EB0D00, #F66802 );
     }
 }
 .note-header{
