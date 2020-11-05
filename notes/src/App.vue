@@ -10,7 +10,7 @@
       <message v-if="message" :message="message" />
 
       <newNote :note="note" @addNote="addNote" />
-      <secondNote :note="note" @addNote="addNote" />
+      <secondNote :note="note" @secondNote="secondNote" />
       <div class="note-header" >
         
         <!-- title -->
