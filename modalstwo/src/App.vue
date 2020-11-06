@@ -24,6 +24,7 @@
                     <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
                     <button class="btn btnPrimary" @click="modalFirst = !modalFirst">Well Done</button>
                 </div>
+
                 </modals>
 
 
@@ -40,12 +41,10 @@
 
                 <!-- body -->
                 <div slot="body">
-                    <form @submit.prevent="submitSecondForm"> 
+                    <form>
                         <label>Name:</label>
-                        <input type="text" required v-model="modalSecond.name">
-                        <label>Email:</label>
-                        <input type="email" required v-model="modalSecond.email">
-                    <button class="btn btnPrimary btnpad">Submit!</button>
+                        <input type="text" v-model="modalSecond.name">
+                    <button class="btn btnPrimary">Submit!</button>
                     </form>                
                 </div>
 
@@ -61,27 +60,16 @@
 import modals from '@/components/Modal.vue'
 export default {
     components: { 
-        modals
+        modals, 
     },
     data () {
         return {
             modalFirst: false,
             modalSecond: {
-                show: false,
+                Show: true,
                 name: '',
-                email: ''
+                email:''
             }
-        }
-    },
-    methods: {
-        submitSecondForm () {
-            console.log({
-                name: this.modalSecond.name,
-                email: this.modalSecond.email
-            })
-                this.modalSecond.name = ''
-                this.modalSecond.email = ''
-                this.modalSecond.show = false
         }
     }
 }
