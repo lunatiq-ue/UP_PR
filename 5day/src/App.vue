@@ -13,7 +13,7 @@
                 @click="modalFirst = !modalFirst">
                 Show first Modal</button>
 
-                <modals 
+                <modals
                 title="First Modal"
                 v-show="modalFirst"
                 @close="modalFirst = false">
@@ -32,7 +32,7 @@
                 @click="modalSecond.show = !modalSecond.show">
                 Show Modal with form</button>
 
-                <modals 
+                <modals
                 title="Modal with form"
                 v-show="modalSecond.show"
                 @close="modalSecond.show = false">
@@ -40,28 +40,39 @@
 
                 <!-- body -->
                 <div slot="body">
-                    <form @submit.prevent="submitSecondForm"> 
+                    <form @submit.prevent="submitSecondForm">
                         <label>Name:</label>
                         <input type="text" required v-model="modalSecond.name">
                         <label>Email:</label>
                         <input type="email" required v-model="modalSecond.email">
                     <button class="btn btnPrimary btnpad">Submit!</button>
-                    </form>                
+                    </form>
                 </div>
 
                 </modals>
+                <!-- modalValidate -->
+                
+                
+                <button class="btn btnPrimary"
+                @click="modalValidate = !modalValidate">
+                Show Modal with form +Validate</button>
+                <modalValidate v-show="modalValidate" @close="modalValidate = false" />
+                
             </div>
             </section>
         </div>
-    </div>  
+    </div>
 
 </template>
 
 <script>
-import modals from '@/components/Modal.vue'
+import modals from '@/components/UI/Modal.vue'
+import modalValidate from '@/components/ModalValidate.vue'
+
 export default {
-    components: { 
-        modals
+    components: {
+        modals,
+        modalValidate
     },
     data () {
         return {
@@ -70,7 +81,8 @@ export default {
                 show: false,
                 name: '',
                 email: ''
-            }
+            },
+            modalValidate: false
         }
     },
     methods: {
