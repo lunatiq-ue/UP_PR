@@ -1,0 +1,64 @@
+hanzo
+
+<script>
+export default {
+    computed: {
+        message () {
+            return this.$store.getters.getMessage
+        }
+    }
+}
+</script>
+
+{{ message }}
+
+genji
+
+<script>
+export default {
+    data () {
+        return {
+            message: null,
+        }
+        },
+        computed: {
+            getMessage () {
+                return this.$store.getters.getMessage
+            }
+        },
+        methods: {
+            setMessage () {
+                this.$store.dispatch('setMessage', this.message)
+            }
+        }
+}
+</script>
+
+
+<input type="text" v-model="message">
+                <button  class="btn btnPrimary" @click="setMessage"> Change message </button>
+                <br>
+                <p> {{ getMessage }} </p>
+
+
+
+index js
+
+state: {
+        message: 'Hello Hanamura'
+    },
+    mutations: {
+        setMessage (state, message) {
+            state.message = message
+        }
+    },
+    actions: {
+        setMessage ({commit}, payload) {
+            commit ('setMessage', payload)
+        }
+    },
+    getters: {
+        getMessage (state) {
+        return state.message
+        }
+    },
