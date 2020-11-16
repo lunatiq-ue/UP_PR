@@ -6,6 +6,7 @@ import Shop from '@/pages/Shop'
 import NotFound from '@/pages/404'
 import Users from '@/pages/Users'
 import Product from '@/pages/Product'
+import Search from '@/pages/Search'
 
 
 export default new Router ({
@@ -30,6 +31,11 @@ export default new Router ({
             name: 'notFound',
             component: NotFound
         },
+        {
+            path: '/search',
+            name: 'search',
+            component: Search
+        }
     ]
 })
 

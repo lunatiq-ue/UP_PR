@@ -29,7 +29,8 @@
             return {
                 links: [
                     { title: 'Shop', url: '/shop' },
-                    { title: 'Users', url: '/users' }
+                    { title: 'Users', url: '/users' },
+                    { title: 'Search', url: '/search' }
                 ]
             }
         }
