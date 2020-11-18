@@ -5,7 +5,7 @@
           <h1 class="title">About my blog:</h1>
           <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           <!-- <client-only> замена деприкейтед <no-ssr>-->
-          <intro title="Lorem Ipsum dolor sit amet!" />
+          <Intro title="Lorem Ipsum dolor sit amet!" />
           <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           <!-- </client-only> -->
           <img src="@/assets/img/img.jpeg">
@@ -15,14 +15,7 @@
   </div>
 </template>
 
-<script>
 
-import intro from '@/components/UI/Intro.vue'
- 
-export default {
-    components: { intro }
-}
-</script>
 
 
 <style lang="scss">

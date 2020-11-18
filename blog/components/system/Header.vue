@@ -3,7 +3,7 @@
                 <div class="navbar">
                     <div class="container">
                         <div class="navbar-content">
-                            <div class="logo">Shimada clan blog</div>
+                            <div class="logo"><nuxt-link to="/">Shimada clan blog</nuxt-link></div>
                                 
                                 <ul class="navbar-list">
                                     
@@ -25,9 +25,8 @@ export default {
     data () {
         return {
             links: [
-                { title: 'Home', url: '/'},
                 { title: 'About', url: '/about'},
-                { title: 'Posts', url: '/posts'}
+                { title: 'Posts', url: '/blog'}
             ]
         }
     }
@@ -35,9 +34,12 @@ export default {
 </script>
 
 <style lang="scss">
+.logo a {
+    color: #37c0f7;
+}
 .navbar-link {
     &.nuxt-link-exact-active {
-            color: #4b40e3;
+            color: #37c0f7;
             // color: #b00b69;
         }
     }

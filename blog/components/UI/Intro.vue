@@ -20,13 +20,13 @@ export default {
 <style lang="scss">
 .intro {
     width: 100%;
-    margin: 30px 0;
+    // margin: 5px 0;
     // padding: 30px 0;
     text-align: center;
     color: white;
-    background-color: #4b40e3;
-    h1 {
-        font-size: 26px;
+    background-color: #37c0f7;
+    h2 {
+        font-size: 50px;
     }
 }
 </style>
