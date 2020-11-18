@@ -25,15 +25,10 @@
 </template>
 
 <script>
-import Message from '@/components/UI/Message.vue'
-import AppButton from '@/components/UI/Controls/Button.vue'
-import AppInput from '@/components/UI/Controls/Input.vue'
-import AppTextArea from '@/components/UI/Controls/TextArea.vue'
+
 
 export default {
-    components: {
-        Message, AppButton, AppInput, AppTextArea
-    },
+   
     data () {
         return {
             message: null,
@@ -47,8 +42,7 @@ export default {
         onSubmit () {
             console.log(this.comment)
             this.message = 'Submitted'
-            this.comment.name = ''
-            this.comment.text = ''
+            
         }
     }
 }
@@ -58,9 +52,10 @@ export default {
     .new-comment {
         text-align: center;
         background-color: #37c0f7;
+        
     }
-
-    .container {
+    
+    .new-comment {
         h2 {
             color: white;
         }

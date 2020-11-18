@@ -14,7 +14,7 @@ export default {
     props: {
         btnClass: {
             type: String,
-            default: 'btnWhite'
+            default: 'btn'
         }
     }
 }

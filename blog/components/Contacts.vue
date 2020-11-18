@@ -60,8 +60,6 @@ export default {
     .contact {
         text-align: center;
         background-color: #37c0f7;
-    }
-    .container {
         h2 {
             color: white;
         }
@@ -69,6 +67,7 @@ export default {
             color: white;
         }
     }
+   
     .contact-form {
         
         max-width: 1600px;
