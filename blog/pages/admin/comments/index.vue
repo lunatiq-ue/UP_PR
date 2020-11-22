@@ -1,23 +1,24 @@
 <template>
-    
+<client-only>
     <commentTable :thead="['Name', 'Text', 'Status', 'Change Status', 'Delete']">
         <tbody slot="tbody">
             <tr v-for="comment in comments" :key="comment.id">
                 <td> <span> {{ comment.name }} </span> </td>
                 <td> <span> {{ comment.text }} </span> </td>
                 <td> 
-                    <span v-if="comment.status" class="status true"> Publish</span> 
-                    <span v-else class="status false"> Deny </span> 
+                    <span v-if="comment.publish" class="status true"> Published </span> 
+                    <span v-else class="status false"> Denied </span> 
                 </td>
-                <td> <span @click="changeComment(comment.id)" class="link"> Change comment </span> </td>
+                <td> <span @click="changeComment(comment)" class="link"> Change comment </span> </td>
                 <td> <span @click="deleteComment(comment.id)" class="link"> Delete comment </span> </td>
             </tr>
         </tbody>
     </commentTable>
-
+</client-only>
 </template>
 
 <script>
+import axios from 'axios'
 import commentTable from '@/components/Admin/CommentTable.vue'
 
 export default {
@@ -25,22 +26,37 @@ export default {
     layout: 'admin',
     data () {
         return {
-            comments: [
-                {id: 1, name: 'Hanzo', text: 'Ryuu ga waga teki wo kurau!', status: true},
-                {id: 2, name: 'Genji', text: 'Ryūjin no ken wo kūrae!', status: false},
-            ] 
+            comments: [] 
         }
     },
+    mounted () {
+        this.loadComments ()
+    },
     methods: {
-        changeComment (id) {
-            console.log (`Change comment id - ${id}`)
+        loadComments () {
+        axios.get('https://blog-011el.firebaseio.com/comments.json')
+            .then((res) => {
+                let commentsArray = []
+                Object.keys(res.data).forEach(key => {
+                    const comment = res.data[key]
+                    commentsArray.push({...comment, id: key})
+                })
+                this.comments = commentsArray
+               // console.log(commentsArray)
+            })
+    },
+        changeComment (comment) {
+            comment.publish = !comment.publish
             
+            // console.log (`Change comment id - ${id}`)
+             axios.put(`https://blog-011el.firebaseio.com/comments/${comment.id}.json`, comment)
     },
         deleteComment (id) {
-            console.log (`Delete comment id - ${id} `)
-
-    }
-
-    }
+            axios
+             .delete(`https://blog-011el.firebaseio.com/comments/${id}.json`)
+             .then((res) => {this.loadComments()})
+    },
+    
+}
 }
 </script>

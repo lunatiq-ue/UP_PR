@@ -3,10 +3,10 @@
         <div class="container  ">
             
             <form @submit.prevent="onSubmit" class="auth__form">
+                
                 <div class="colorb">
                 <AppInput type="email" v-model="user.email"> Login: </AppInput> 
                 <AppInput type="password" v-model="user.password"> Password: </AppInput>
-                
                 <div class="contorls">
                     <AppButton class="btnwhite"> Login! </AppButton>
                 </div>
@@ -20,7 +20,7 @@
 <script>
 
 export default {
-    layout: 'admin',
+    // layout: 'admin',
     data () {
         return {
             user: {
@@ -31,9 +31,15 @@ export default {
     },
     methods: {
         onSubmit () {
-            // reset
-            this.user.email = '',
-            this.user.password = ''
+            this.$store.dispatch('authUser', this.user)
+            .then((res) => {
+                 this.$router.push('/admin')
+            })
+            .catch((e) => {
+                console.log(e)
+                this.user.email = ''
+                this.user.password = ''
+            })
         }
     }
 }
@@ -43,8 +49,6 @@ export default {
 
 .auth {
     text-align: center;
-    
-    
 }
 .colorb{
     padding: 20px;

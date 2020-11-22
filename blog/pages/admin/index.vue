@@ -1,13 +1,31 @@
 <template>
-  <PostsList :admin=true :posts="postsLoaded" />
+<div> 
+   <PostsList :admin=true :posts="$store.getters.getPostsLoaded" /> 
+  {{postsLoaded}}
+</div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     layout: 'admin',
     computed: {
       postsLoaded () {
-        return this.$store.getters.getPostsLoaded
+         axios.get('https://blog-011el.firebaseio.com/posts.json')
+             .then(res => {
+                
+                 const postsArray = []
+                 for (let key in res.data) {
+                     postsArray.push( { ...res.data[key], id: key } )
+                 }
+                 console.log(postsArray)
+                 return [...postsArray].reverse()
+             })
+             .catch(e=> console.log(e))
+
+        // console.log(this.$store.getters)
+        // return this.$store.getters.getPostsLoaded
       }    
     }
 }

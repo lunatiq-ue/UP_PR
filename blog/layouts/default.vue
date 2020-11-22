@@ -3,7 +3,7 @@
 
       <Header />
       
-      <Nuxt />
+      <nuxt />
 
   </div>
 </template>

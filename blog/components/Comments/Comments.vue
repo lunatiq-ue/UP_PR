@@ -3,6 +3,7 @@
         <div class="container">
             
             <h1 class="title"> Comments: </h1>
+            <p v-if="comments.length == 0"> Comments: 0 </p>
             <div class="comment" v-for="comment in comments" :key="comment.name">
                 <p class="name"> {{ comment.name }} </p>
                 <p class="text"> {{ comment.text }} </p>
