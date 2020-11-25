@@ -1,7 +1,7 @@
 <template>
     <!-- note list -->
         <div class="notes">  
-            <div class="note" :class="{ full: !grid }" v-for="(note, index) in notes" :key="index">
+            <div class="note" :class="[{ full: !grid }, note.priority]" v-for="(note, index) in notes" :key="index">
                 <div class="note-header" :class=" { full: !grid } " >
                     <p> {{ note.title }} </p>
                     <p style="cursor: pointer;" @click="removeNote(index)"> x </p>
@@ -24,10 +24,6 @@ export default {
         grid: {
             type: Boolean,
             required: true
-        },
-        priority: {
-            type: Boolean,
-            required: true
         }
     },
     methods: {
@@ -41,25 +37,20 @@ export default {
 
 <style lang="scss">
 .notes {
-display:flex;
-align-items: center;
-justify-content: space-between;
-flex-wrap: wrap;
-padding: 40px 0;
-transition: all .25s cubic-bezier(.02,.01,.47,1);
-box-shadow: 0 30px 30px rgba(0,0,0,.02);
-&.hover {
-    box-shadow: 0 30px 30px rgba(0, 0, 0,.04);
-    transition: translate(0,-6px);
-    transition-delay: 0s !important ;
-
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 40px 0;
+    transition: all .25s cubic-bezier(.02,.01,.47,1);
+    box-shadow: 0 30px 30px rgba(0,0,0,.02);
 }
 
-&.full {
+.full {
     width: 100%;
     text-align: center;
 }
-}
+
 .header-container {
     font-size: 32px;
     text-align: center;
@@ -71,16 +62,24 @@ box-shadow: 0 30px 30px rgba(0,0,0,.02);
     width: 48%;
     padding: 18px 20px;
     margin-bottom: 20px;
-    background: linear-gradient(-78deg, #FFC6A6, #FFD4CF);
+    background: whitesmoke;
     border-radius: 20px;
 
     &.full {
         width: 100%;
         justify-content: center;
+    } 
+
+    &.first {
+    border: 5px solid greenyellow;
     }
 
-    &.priority {
-        background: linear-gradient(-78deg, #EB0D00, #F66802 );
+    &.second {
+    border: 5px solid orange;
+    }
+
+    &.third {
+    border: 5px solid red;
     }
 }
 .note-header{
@@ -121,4 +120,6 @@ box-shadow: 0 30px 30px rgba(0,0,0,.02);
         color: #999999;
     }
 }
+
+
 </style>

@@ -8,9 +8,8 @@
       <h1 class="header-container"> {{ title }} </h1>
     
       <message v-if="message" :message="message" />
-
       <newNote :note="note" @addNote="addNote" />
-      <secondNote :class=" { active: !priority } " :note="note" @secondNote="secondNote" />
+
       <div class="note-header" >
         
         <!-- title -->
@@ -35,10 +34,7 @@
 
       </div>
     </section>
-  </div>
-
-
-  
+  </div>  
 </div>
 </template>
 
@@ -47,38 +43,27 @@ import message from '@/components/Message.vue'
 import Notes from '@/components/Notes.vue'
 import newNote from '@/components/NewNote.vue'
 import search from '@/components/Search.vue'
-import secondNote from '@/components/secondNote.vue'
 
 export default {
   components: {
     message,
     Notes,
     newNote,
-    search,
-    secondNote
+    search
 
   },
   data () {
     return {
       title: 'Notes App',
-                search: '',
-                message: null,
-                
-                grid: true,
-                priority: true, 
-                note: {
-                    title: '',
-                    descr: ''
+        search: '',
+          message: null,
+            grid: true, 
+              note: {
+                title: '',
+                descr: '',
+                priority: 'first'
                 }, 
-                notes: [
-                       {
-                        title: 'First Note',
-                        descr: 'Description for first note',
-                        date: new Date(Date.now()).toLocaleString()
-                       },
-                       
-                                                      
-                       ]
+                  notes: []
     }
   },
   computed: {
@@ -98,44 +83,31 @@ export default {
       return array;
     }
   },
+  
+  created() {
+    this.notes = this.$store.getters.getNotes
+  },
+
   methods: {
-                 secondNote () {
-                                // console.log(this.note)
-                                let {title, descr} = this.note
-
-                                if (title === '') {
-                                this.message = 'Title cant be blank'
-                                return false
-                                }
-
-                                this.notes.push({
-                                    title,
-                                    descr,
-                                    date: new Date(Date.now()).toLocaleString()
-                                })
-                                this.message = null
-                                this.note.title = ''
-                                this.note.descr = ''
-                 },
-
-
                 addNote () {
-                    // console.log(this.note)
-                    let {title, descr} = this.note
 
+                    let {title, descr, priority} = this.note
+                    
                     if (title === '') {
-                    this.message = 'Title cant be blank'
+                    this.message = 'Title cant be blank!'
                     return false
                     }
-
-                    this.notes.push({
+                                        
+                    this.$store.dispatch('addNote', {
                         title,
                         descr,
+                        priority,
                         date: new Date(Date.now()).toLocaleString()
                     })
                     this.message = null
                     this.note.title = ''
                     this.note.descr = ''
+                    
                 },
                 removeNote (index) {
                   this.notes.splice(index, 1)
