@@ -45,21 +45,18 @@ export default {
 
     components: { NotifyComp, Preloader },
     data () {
-        return {
-            loading: false,
-            error: null
-        }
+        return { }
     },
 
-
-
     mounted () {
-        this.getNotify () 
-        
+        this.$store.dispatch('getNotify'); 
     },
     computed: {
         messages () {
             return this.$store.getters.getMessageMain
+        },
+        error () {
+            
         }
     },
     methods: {
