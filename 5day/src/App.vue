@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-           
+
             <header>
                 <div class="navbar">
                     <div class="container">

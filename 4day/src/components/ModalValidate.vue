@@ -28,7 +28,9 @@
              <div>
                     <div class="form-group" :class="{ 'form-group--error': $v.password.$error }">
                         <label class="form__label">Password</label>
-                        <div class="error error-req" v-if="!$v.password.minLength">Password must have at least {{ $v.password.$params.minLength.min }} letters.</div>
+                        <div class="error error-req" v-if="!$v.password.minLength">
+                            Password must have at least {{ $v.password.$params.minLength.min }} letters.
+                            </div>
                          <div class="error error-req" v-if="!$v.password.required">Password is required.</div>
                         <input class="form__input" v-model.trim="$v.password.$model"/>
                     </div>
