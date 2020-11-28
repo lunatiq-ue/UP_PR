@@ -6,11 +6,7 @@
                 <h1>Ryūjin no ken wo kūrae!</h1>
                 <h1>Hello, its Shop Page</h1>
                 <div class="item_wrapper">
-                <shopItem 
-                v-for="product in shopList" 
-                :key="product.id"
-                :product="product" />
-                </div>
+                
             </div>
         </section>
     </div>
@@ -18,9 +14,7 @@
 </template>
 
 <script>
-import shopItem from '@/components/ShopItem.vue'
 export default {
-    components: {shopItem},
     data () {
         return {
             shopList: null

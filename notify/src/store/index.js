@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import notify from './notify'
+import notify from './modules/notify'
 
 Vue.use(Vuex)
 
